@@ -11,17 +11,21 @@ A full-stack flight tracking application built with React, TypeScript, Express, 
 ## Setup Instructions
 
 1. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 2. **Set up environment variables:**
+
    ```bash
    cp .env.example .env
    ```
+
    Then edit `.env` and add your PostgreSQL connection string.
 
 3. **Set up the database:**
+
    ```bash
    npm run db:push
    ```
@@ -35,6 +39,7 @@ A full-stack flight tracking application built with React, TypeScript, Express, 
 ## Build for Production
 
 1. **Build the application:**
+
    ```bash
    npm run build
    ```
@@ -72,10 +77,20 @@ A full-stack flight tracking application built with React, TypeScript, Express, 
 - `npm start` - Start production server
 - `npm run check` - Run TypeScript type checking
 - `npm run db:push` - Push database schema changes
+- `npm run format` - Format the code using Prettier
+
+## Code Formatting
+
+This project uses [Prettier](https://prettier.io/) for consistent code formatting. To format the code, run the following command:
+
+```bash
+npm run format
+```
 
 ## Tech Stack
 
 ### Frontend
+
 - React 18
 - TypeScript
 - Tailwind CSS
@@ -84,12 +99,14 @@ A full-stack flight tracking application built with React, TypeScript, Express, 
 - Radix UI components
 
 ### Backend
+
 - Express.js
 - PostgreSQL
 - Drizzle ORM
 - Zod validation
 
 ### Development
+
 - Vite
 - TypeScript
 - ESLint
