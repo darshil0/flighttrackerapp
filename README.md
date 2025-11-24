@@ -246,17 +246,6 @@ DELETE /api/flights/:id
 - `delayed` - Flight is delayed
 - `cancelled` - Flight is cancelled
 
-## 🎨 Code Formatting
-
-This project uses [Prettier](https://prettier.io/) for consistent code formatting.
-
-Format all files:
-```bash
-npm run format
-```
-
-Format is automatically applied to all `.ts`, `.tsx`, `.json`, `.css`, and `.md` files.
-
 ## 🧪 Testing the API
 
 ### Using cURL
