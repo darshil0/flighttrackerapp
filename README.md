@@ -391,8 +391,4 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## 👨‍💻 Author
 
-Created with ❤️ for tracking flights efficiently.
-
----
-
-**Need Help?** Check the troubleshooting section or open an issue on GitHub.
+Created with ❤️ by Darshil for tracking flights efficiently.
