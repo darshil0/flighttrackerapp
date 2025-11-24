@@ -271,20 +271,3 @@ ls -la shared/
 ```
 
 ---
-
-## Next Steps
-
-1. **Run these commands** to identify which files actually exist:
-   ```bash
-   find . -name "*.ts" -o -name "*.tsx" | grep -v node_modules
-   ```
-
-2. **Check for errors** in existing files:
-   ```bash
-   npm run check
-   ```
-
-3. **Try to start the app** and note error messages:
-   ```bash
-   npm run dev
-   ```
