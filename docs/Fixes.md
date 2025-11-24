@@ -288,18 +288,3 @@ ls -la shared/
    ```bash
    npm run dev
    ```
-
-4. **Share the output** of error messages so I can provide specific fixes for your actual codebase
-
----
-
-## How to Share Your Codebase for Specific Fixes
-
-You can:
-1. Paste the content of specific files showing errors
-2. Share error messages from terminal/console
-3. Use `cat filename.ts` to show file contents
-4. Create a GitHub Gist with the problematic files
-5. Share the output of `npm run dev` or `npm run build`
-
-This will help me provide **exact fixes** for your specific issues rather than general solutions.
