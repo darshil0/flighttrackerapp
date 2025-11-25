@@ -3,6 +3,9 @@
 A full-stack flight tracking application built with React, TypeScript, Express, and PostgreSQL. Track flights in real-time with a modern, responsive interface.
 
 ![Flight Tracker](https://img.shields.io/badge/version-1.1.0-blue.svg)
+![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-green.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
 
 ## 📜 Changelog
 
@@ -15,8 +18,6 @@ A full-stack flight tracking application built with React, TypeScript, Express, 
   - Resolved all outstanding TypeScript errors.
   - Correctly configured the project for Vite's type definitions.
   - Cleaned up unused variables in server-side code.
-![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-green.svg)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ## ✨ Features
 
