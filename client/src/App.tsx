@@ -29,31 +29,6 @@ function App() {
     refetchInterval: 30000, // Refetch every 30 seconds
   });
 
-  // Create flight mutation
-  const createFlightMutation = useMutation({
-    mutationFn: createFlight,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['flights'] });
-    },
-  });
-
-  // Update flight mutation
-  const updateFlightMutation = useMutation({
-    mutationFn: ({ id, updates }: { id: number; updates: FlightUpdateInput }) =>
-      updateFlight(id, updates),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['flights'] });
-    },
-  });
-
-  // Delete flight mutation
-  const deleteFlightMutation = useMutation({
-    mutationFn: deleteFlight,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['flights'] });
-    },
-  });
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'scheduled':
