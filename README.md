@@ -3,6 +3,18 @@
 A full-stack flight tracking application built with React, TypeScript, Express, and PostgreSQL. Track flights in real-time with a modern, responsive interface.
 
 ![Flight Tracker](https://img.shields.io/badge/version-1.1.0-blue.svg)
+
+## 📜 Changelog
+
+### v1.1.0 (2025-11-24)
+- **🚀 Features**
+  - Implemented full CRUD (Create, Read, Update, Delete) functionality for flights.
+  - Added a modal form for creating and editing flight records.
+  - Added "Edit" and "Delete" buttons to each flight card.
+- **🔧 Fixes**
+  - Resolved all outstanding TypeScript errors.
+  - Correctly configured the project for Vite's type definitions.
+  - Cleaned up unused variables in server-side code.
 ![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-green.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
