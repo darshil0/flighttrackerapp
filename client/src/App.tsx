@@ -1,10 +1,8 @@
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { fetchFlights, createFlight, updateFlight, deleteFlight } from './lib/api';
-import type { Flight, NewFlightInput, FlightUpdateInput } from '../../shared/types';
+import { useQuery } from '@tanstack/react-query';
+import { fetchFlights } from './lib/api';
+import type { Flight } from '../../shared/types';
 
 function App() {
-  const queryClient = useQueryClient();
-
   // Fetch all flights
   const {
     data: flights,
@@ -15,31 +13,6 @@ function App() {
     queryKey: ['flights'],
     queryFn: fetchFlights,
     refetchInterval: 30000, // Refetch every 30 seconds
-  });
-
-  // Create flight mutation
-  const createFlightMutation = useMutation({
-    mutationFn: createFlight,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['flights'] });
-    },
-  });
-
-  // Update flight mutation
-  const updateFlightMutation = useMutation({
-    mutationFn: ({ id, updates }: { id: number; updates: FlightUpdateInput }) =>
-      updateFlight(id, updates),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['flights'] });
-    },
-  });
-
-  // Delete flight mutation
-  const deleteFlightMutation = useMutation({
-    mutationFn: deleteFlight,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['flights'] });
-    },
   });
 
   const getStatusColor = (status: string) => {
