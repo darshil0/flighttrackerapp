@@ -1,8 +1,20 @@
+import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { fetchFlights, createFlight, updateFlight, deleteFlight } from './lib/api';
 import type { Flight, NewFlightInput, FlightUpdateInput } from '../../shared/types';
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingFlight, setEditingFlight] = useState<Flight | null>(null);
+  const [newFlight, setNewFlight] = useState<NewFlightInput>({
+    flightNumber: '',
+    airline: '',
+    origin: '',
+    destination: '',
+    departureTime: '',
+    arrivalTime: '',
+    status: 'scheduled',
+  });
   const queryClient = useQueryClient();
 
   // Fetch all flights
@@ -111,6 +123,119 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-8 rounded-lg shadow-xl w-full max-w-2xl">
+            <h2 className="text-2xl font-bold mb-4">
+              {editingFlight ? 'Edit Flight' : 'New Flight'}
+            </h2>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (editingFlight) {
+                  updateFlightMutation.mutate({
+                    id: editingFlight.id,
+                    updates: newFlight,
+                  });
+                } else {
+                  createFlightMutation.mutate(newFlight);
+                }
+                setIsModalOpen(false);
+                setEditingFlight(null);
+                setNewFlight({
+                  flightNumber: '',
+                  airline: '',
+                  origin: '',
+                  destination: '',
+                  departureTime: '',
+                  arrivalTime: '',
+                  status: 'scheduled',
+                });
+              }}
+            >
+              <div className="grid grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  placeholder="Flight Number"
+                  value={newFlight.flightNumber}
+                  onChange={(e) =>
+                    setNewFlight({ ...newFlight, flightNumber: e.target.value })
+                  }
+                  className="p-2 border rounded"
+                />
+                <input
+                  type="text"
+                  placeholder="Airline"
+                  value={newFlight.airline}
+                  onChange={(e) =>
+                    setNewFlight({ ...newFlight, airline: e.target.value })
+                  }
+                  className="p-2 border rounded"
+                />
+                <input
+                  type="text"
+                  placeholder="Origin"
+                  value={newFlight.origin}
+                  onChange={(e) =>
+                    setNewFlight({ ...newFlight, origin: e.target.value })
+                  }
+                  className="p-2 border rounded"
+                />
+                <input
+                  type="text"
+                  placeholder="Destination"
+                  value={newFlight.destination}
+                  onChange={(e) =>
+                    setNewFlight({ ...newFlight, destination: e.target.value })
+                  }
+                  className="p-2 border rounded"
+                />
+                <input
+                  type="datetime-local"
+                  placeholder="Departure Time"
+                  value={
+                    newFlight.departureTime
+                      ? new Date(newFlight.departureTime).toISOString().slice(0, 16)
+                      : ''
+                  }
+                  onChange={(e) =>
+                    setNewFlight({ ...newFlight, departureTime: e.target.value })
+                  }
+                  className="p-2 border rounded"
+                />
+                <input
+                  type="datetime-local"
+                  placeholder="Arrival Time"
+                  value={
+                    newFlight.arrivalTime
+                      ? new Date(newFlight.arrivalTime).toISOString().slice(0, 16)
+                      : ''
+                  }
+                  onChange={(e) =>
+                    setNewFlight({ ...newFlight, arrivalTime: e.target.value })
+                  }
+                  className="p-2 border rounded"
+                />
+              </div>
+              <div className="flex justify-end gap-4 mt-4">
+                <button
+                  type="button"
+                  onClick={() => setIsModalOpen(false)}
+                  className="bg-gray-500 text-white px-4 py-2 rounded-lg"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="bg-green-600 text-white px-4 py-2 rounded-lg"
+                >
+                  {editingFlight ? 'Update' : 'Create'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
       {/* Header */}
       <header className="bg-white shadow-sm">
         <div className="container mx-auto px-4 py-6">
@@ -119,10 +244,30 @@ function App() {
               <h1 className="text-3xl font-bold text-gray-900">Flight Tracker</h1>
               <p className="text-gray-600 mt-1">Real-time flight information</p>
             </div>
-            <button
-              onClick={() => refetch()}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
-            >
+            <div className="flex items-center gap-4">
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center gap-2"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                  />
+                </svg>
+                New Flight
+              </button>
+              <button
+                onClick={() => refetch()}
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+              >
               <svg
                 className="w-5 h-5"
                 fill="none"
@@ -138,6 +283,7 @@ function App() {
               </svg>
               Refresh
             </button>
+            </div>
           </div>
         </div>
       </header>
@@ -251,6 +397,36 @@ function App() {
                     )}
                   </div>
                 )}
+                <div className="mt-4 pt-4 border-t border-gray-200 flex justify-end gap-2">
+                  <button
+                    onClick={() => {
+                      setEditingFlight(flight);
+                      setNewFlight({
+                        ...flight,
+                        departureTime: new Date(flight.departureTime)
+                          .toISOString()
+                          .slice(0, 16),
+                        arrivalTime: new Date(flight.arrivalTime)
+                          .toISOString()
+                          .slice(0, 16),
+                        gate: flight.gate ?? '',
+                        terminal: flight.terminal ?? '',
+                        aircraft: flight.aircraft ?? '',
+                        notes: flight.notes ?? '',
+                      });
+                      setIsModalOpen(true);
+                    }}
+                    className="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => deleteFlightMutation.mutate(flight.id)}
+                    className="bg-red-500 text-white px-3 py-1 rounded-lg text-sm"
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             ))}
           </div>

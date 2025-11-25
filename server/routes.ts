@@ -6,7 +6,7 @@ import { eq, desc } from 'drizzle-orm';
 const router = Router();
 
 // Health check endpoint
-router.get('/api/health', (req: Request, res: Response) => {
+router.get('/api/health', (_req: Request, res: Response) => {
   res.json({
     status: 'ok',
     timestamp: new Date().toISOString(),
@@ -15,7 +15,7 @@ router.get('/api/health', (req: Request, res: Response) => {
 });
 
 // Get all flights
-router.get('/api/flights', async (req: Request, res: Response) => {
+router.get('/api/flights', async (_req: Request, res: Response) => {
   try {
     const allFlights = await db
       .select()
