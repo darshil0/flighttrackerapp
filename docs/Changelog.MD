@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [1.1.1] - 2024-11-25
+## [1.1.1] - 2025-12-16
 
 ### Fixed
 - Implemented full CRUD (Create, Read, Update, Delete) functionality for flights.
@@ -31,7 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [1.0.0] - 2024-11-24
+## [1.0.0] - 2025-11-24
 
 ### Added - Initial Release
 - Complete flight tracking system with PostgreSQL database
@@ -118,7 +118,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Version History Summary
 
-### [1.0.0] - 2024-11-24
+### [1.0.0] - 2025-11-24
 - 🎉 Initial public release
 - ✨ Complete flight tracking system
 - 📱 Responsive web interface
@@ -225,19 +225,19 @@ Each version follows this structure:
 
 ## Upcoming Releases
 
-### v1.1.0 (Planned - Q1 2025)
+### v1.1.0 (Planned - Q1 2026)
 - User authentication system
 - Flight search functionality
 - Advanced filtering options
 - Flight history tracking
 
-### v1.2.0 (Planned - Q2 2025)
+### v1.2.0 (Planned - Q2 2026)
 - Real-time WebSocket updates
 - Push notifications
 - Email alerts
 - Mobile responsive improvements
 
-### v2.0.0 (Planned - Q3 2025)
+### v2.0.0 (Planned - Q3 2026)
 - Major architecture overhaul
 - Microservices implementation
 - GraphQL API
