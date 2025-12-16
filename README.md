@@ -9,7 +9,7 @@ A full-stack flight tracking application built with React, TypeScript, Express, 
 
 ## 📜 Changelog
 
-### v1.1.1 (2024-11-25)
+### v1.1.1 (2025-12-16)
 - **🔧 Fixes**
   - Implemented full CRUD (Create, Read, Update, Delete) functionality for flights.
   - Added a modal form for creating and editing flight records.
