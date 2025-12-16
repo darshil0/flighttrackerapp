@@ -9,12 +9,11 @@ A full-stack flight tracking application built with React, TypeScript, Express, 
 
 ## 📜 Changelog
 
-### v1.1.0 (2025-11-24)
-- **🚀 Features**
+### v1.1.1 (2024-11-25)
+- **🔧 Fixes**
   - Implemented full CRUD (Create, Read, Update, Delete) functionality for flights.
   - Added a modal form for creating and editing flight records.
   - Added "Edit" and "Delete" buttons to each flight card.
-- **🔧 Fixes**
   - Resolved all outstanding TypeScript errors.
   - Correctly configured the project for Vite's type definitions.
   - Cleaned up unused variables in server-side code.
