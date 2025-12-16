@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { fetchFlights, createFlight, updateFlight, deleteFlight } from './lib/api';
-import type { Flight, NewFlightInput, FlightUpdateInput } from '../../shared/types';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { fetchFlights } from './lib/api';
+import type { Flight, NewFlightInput } from '../../shared/types';
+import { useMutation } from '@tanstack/react-query';
+import { createFlight, updateFlight, deleteFlight } from './lib/api';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,6 +30,76 @@ function App() {
     queryFn: fetchFlights,
     refetchInterval: 30000, // Refetch every 30 seconds
   });
+
+  // Create flight mutation
+  const createFlightMutation = useMutation({
+    mutationFn: createFlight,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['flights'] });
+    },
+  });
+
+  // Update flight mutation
+  const updateFlightMutation = useMutation({
+    mutationFn: ({ id, updates }: { id: number; updates: NewFlightInput }) =>
+      updateFlight(id, updates),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['flights'] });
+    },
+  });
+
+  // Delete flight mutation
+  const deleteFlightMutation = useMutation({
+    mutationFn: deleteFlight,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['flights'] });
+    },
+  });
+
+  const handleDelete = (id: number) => {
+    if (window.confirm('Are you sure you want to delete this flight?')) {
+      deleteFlightMutation.mutate(id);
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (editingFlight) {
+      updateFlightMutation.mutate(
+        { id: editingFlight.id, updates: newFlight },
+        {
+          onSuccess: () => {
+            setIsModalOpen(false);
+            setEditingFlight(null);
+            setNewFlight({
+              flightNumber: '',
+              airline: '',
+              origin: '',
+              destination: '',
+              departureTime: '',
+              arrivalTime: '',
+              status: 'scheduled',
+            });
+          },
+        }
+      );
+    } else {
+      createFlightMutation.mutate(newFlight, {
+        onSuccess: () => {
+          setIsModalOpen(false);
+          setNewFlight({
+            flightNumber: '',
+            airline: '',
+            origin: '',
+            destination: '',
+            departureTime: '',
+            arrivalTime: '',
+            status: 'scheduled',
+          });
+        },
+      });
+    }
+  };
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -105,28 +177,7 @@ function App() {
               {editingFlight ? 'Edit Flight' : 'New Flight'}
             </h2>
             <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                if (editingFlight) {
-                  updateFlightMutation.mutate({
-                    id: editingFlight.id,
-                    updates: newFlight,
-                  });
-                } else {
-                  createFlightMutation.mutate(newFlight);
-                }
-                setIsModalOpen(false);
-                setEditingFlight(null);
-                setNewFlight({
-                  flightNumber: '',
-                  airline: '',
-                  origin: '',
-                  destination: '',
-                  departureTime: '',
-                  arrivalTime: '',
-                  status: 'scheduled',
-                });
-              }}
+              onSubmit={handleSubmit}
             >
               <div className="grid grid-cols-2 gap-4">
                 <input
@@ -396,7 +447,7 @@ function App() {
                     Edit
                   </button>
                   <button
-                    onClick={() => deleteFlightMutation.mutate(flight.id)}
+                    onClick={() => handleDelete(flight.id)}
                     className="bg-red-500 text-white px-3 py-1 rounded-lg text-sm"
                   >
                     Delete

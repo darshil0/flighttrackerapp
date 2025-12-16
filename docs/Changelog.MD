@@ -19,6 +19,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.1] - 2024-11-25
+
+### Fixed
+- Implemented full CRUD (Create, Read, Update, Delete) functionality for flights.
+- Added a modal form for creating and editing flight records.
+- Added "Edit" and "Delete" buttons to each flight card.
+- Resolved all outstanding TypeScript errors.
+- Correctly configured the project for Vite's type definitions.
+- Cleaned up unused variables in server-side code.
+
+---
+
 ## [1.0.0] - 2024-11-24
 
 ### Added - Initial Release
