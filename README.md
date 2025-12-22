@@ -8,7 +8,7 @@ A full-stack flight tracking application built with React, TypeScript, Express, 
 
 ## 📜 Changelog
 
-### v1.1.2 (2024-10-26)
+### v1.1.2 (2025-12-22)
 
 - **⚙️ Maintenance**
   - Updated project dependencies to address security vulnerabilities.
