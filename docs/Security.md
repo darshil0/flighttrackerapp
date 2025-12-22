@@ -105,23 +105,28 @@ Contact: security-researcher@example.com
 ### Known Limitations (To Be Addressed)
 
 ⚠️ **Authentication**: Not yet implemented
+
 - No user authentication system
 - No authorization checks
 - All API endpoints are public
 
 ⚠️ **Rate Limiting**: Not yet implemented
+
 - No request rate limiting
 - Potential for DoS attacks
 
 ⚠️ **API Keys**: Not implemented
+
 - No API key authentication
 - No request signing
 
 ⚠️ **Input Sanitization**: Minimal
+
 - Basic validation in place
 - Advanced sanitization needed
 
 ⚠️ **HTTPS**: Not enforced
+
 - Application should be deployed behind HTTPS proxy
 - No built-in TLS/SSL support
 
@@ -174,6 +179,7 @@ REVOKE CREATE ON SCHEMA public FROM flighttracker_app;
 ### Environment Variable Security
 
 **Never commit these to git:**
+
 ```bash
 # .env
 DATABASE_URL=postgresql://...
@@ -182,6 +188,7 @@ JWT_SECRET=...
 ```
 
 **Always use strong, unique values:**
+
 ```bash
 # Generate strong secrets
 openssl rand -base64 32
@@ -192,6 +199,7 @@ openssl rand -base64 32
 ### Our Commitment
 
 We are committed to:
+
 - Responding to security reports promptly
 - Keeping you informed throughout the process
 - Crediting security researchers (with permission)
@@ -210,6 +218,7 @@ We are committed to:
 ### Safe Harbor
 
 We support safe harbor for security researchers who:
+
 - Make a good faith effort to avoid privacy violations
 - Do not modify or access data beyond what's necessary
 - Do not perform actions that could harm availability
@@ -229,6 +238,7 @@ We will not pursue legal action against researchers who follow these guidelines.
 ### Security Patch Releases
 
 Security patches will be released as:
+
 - Patch versions (x.x.X) for current major version
 - Documented in CHANGELOG.md with [SECURITY] tag
 - Announced via GitHub releases
@@ -238,7 +248,7 @@ Security patches will be released as:
 
 We recognize and thank the following security researchers for their responsible disclosure:
 
-*No vulnerabilities reported yet*
+_No vulnerabilities reported yet_
 
 ---
 
@@ -247,18 +257,21 @@ We recognize and thank the following security researchers for their responsible 
 ### Planned Security Improvements
 
 **v1.1.0 (Q1 2025)**
+
 - [ ] User authentication system
 - [ ] JWT token-based auth
 - [ ] Password hashing with bcrypt
 - [ ] Rate limiting middleware
 
 **v1.2.0 (Q2 2025)**
+
 - [ ] API key authentication
 - [ ] Role-based access control (RBAC)
 - [ ] Audit logging
 - [ ] Security event monitoring
 
 **v1.3.0 (Q3 2025)**
+
 - [ ] Two-factor authentication (2FA)
 - [ ] Session management
 - [ ] Advanced input sanitization
@@ -274,6 +287,7 @@ We recognize and thank the following security researchers for their responsible 
 ## Contact
 
 For security-related questions or concerns:
+
 - Email: [your-email@example.com]
 - GitHub: [@darshil0](https://github.com/darshil0)
 

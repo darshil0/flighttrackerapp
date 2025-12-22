@@ -1,0 +1,34 @@
+
+> flighttrackerapp@1.1.0 dev
+> tsx watch server/index-dev.ts
+
+❌ Database connection failed: AggregateError [ECONNREFUSED]:
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+    at cachedError (file:///app/node_modules/postgres/src/query.js:170:23)
+    at new Query (file:///app/node_modules/postgres/src/query.js:36:24)
+    at sql (file:///app/node_modules/postgres/src/index.js:112:11)
+    at testConnection (/app/server/db.ts:26:11) {
+  code: 'ECONNREFUSED',
+  [errors]: [
+    Error: connect ECONNREFUSED ::1:5432
+        at createConnectionError (node:net:1678:14)
+        at afterConnectMultiple (node:net:1708:16) {
+      errno: -111,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '::1',
+      port: 5432
+    },
+    Error: connect ECONNREFUSED 127.0.0.1:5432
+        at createConnectionError (node:net:1678:14)
+        at afterConnectMultiple (node:net:1708:16) {
+      errno: -111,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 5432
+    }
+  ]
+}
+Failed to connect to database. Please check your DATABASE_URL.

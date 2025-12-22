@@ -27,6 +27,7 @@ Production: https://your-domain.com/api
 ⚠️ **Note**: Authentication will be required in v1.1.0. All endpoints are currently public.
 
 **Planned (v1.1.0+)**:
+
 - JWT Bearer token authentication
 - API key authentication for programmatic access
 
@@ -55,6 +56,7 @@ GET /api/health
 ```
 
 **Status Codes**
+
 - `200 OK`: Server is healthy
 - `500 Internal Server Error`: Server is experiencing issues
 
@@ -96,6 +98,7 @@ GET /api/flights
 ```
 
 **Status Codes**
+
 - `200 OK`: Flights retrieved successfully
 - `500 Internal Server Error`: Database error
 
@@ -111,9 +114,9 @@ GET /api/flights/:id
 
 **Parameters**
 
-| Parameter | Type | Location | Description |
-|-----------|------|----------|-------------|
-| `id` | integer | path | Flight ID |
+| Parameter | Type    | Location | Description |
+| --------- | ------- | -------- | ----------- |
+| `id`      | integer | path     | Flight ID   |
 
 **Response**
 
@@ -137,6 +140,7 @@ GET /api/flights/:id
 ```
 
 **Status Codes**
+
 - `200 OK`: Flight found
 - `400 Bad Request`: Invalid flight ID
 - `404 Not Found`: Flight does not exist
@@ -172,6 +176,7 @@ Content-Type: application/json
 ```
 
 **Required Fields**
+
 - `flightNumber` (string, max 20 chars)
 - `airline` (string, max 100 chars)
 - `origin` (string, max 100 chars)
@@ -180,6 +185,7 @@ Content-Type: application/json
 - `arrivalTime` (ISO 8601 datetime)
 
 **Optional Fields**
+
 - `status` (string, default: "scheduled")
 - `gate` (string, max 10 chars)
 - `terminal` (string, max 10 chars)
@@ -208,6 +214,7 @@ Content-Type: application/json
 ```
 
 **Status Codes**
+
 - `201 Created`: Flight created successfully
 - `400 Bad Request`: Invalid request body
 - `500 Internal Server Error`: Database error
@@ -225,9 +232,9 @@ Content-Type: application/json
 
 **Parameters**
 
-| Parameter | Type | Location | Description |
-|-----------|------|----------|-------------|
-| `id` | integer | path | Flight ID |
+| Parameter | Type    | Location | Description |
+| --------- | ------- | -------- | ----------- |
+| `id`      | integer | path     | Flight ID   |
 
 **Request Body**
 
@@ -263,6 +270,7 @@ You can update any combination of fields. Only include fields you want to update
 ```
 
 **Status Codes**
+
 - `200 OK`: Flight updated successfully
 - `400 Bad Request`: Invalid flight ID or request body
 - `404 Not Found`: Flight does not exist
@@ -280,9 +288,9 @@ DELETE /api/flights/:id
 
 **Parameters**
 
-| Parameter | Type | Location | Description |
-|-----------|------|----------|-------------|
-| `id` | integer | path | Flight ID |
+| Parameter | Type    | Location | Description |
+| --------- | ------- | -------- | ----------- |
+| `id`      | integer | path     | Flight ID   |
 
 **Response**
 
@@ -309,6 +317,7 @@ DELETE /api/flights/:id
 ```
 
 **Status Codes**
+
 - `200 OK`: Flight deleted successfully
 - `400 Bad Request`: Invalid flight ID
 - `404 Not Found`: Flight does not exist
@@ -320,34 +329,34 @@ DELETE /api/flights/:id
 
 ### Flight
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `id` | integer | Auto | Unique identifier |
-| `flightNumber` | string(20) | Yes | Flight number (e.g., "AA100") |
-| `airline` | string(100) | Yes | Airline name |
-| `origin` | string(100) | Yes | Departure location |
-| `destination` | string(100) | Yes | Arrival location |
-| `departureTime` | timestamp | Yes | Scheduled departure (ISO 8601) |
-| `arrivalTime` | timestamp | Yes | Scheduled arrival (ISO 8601) |
-| `status` | string(50) | Yes | Flight status |
-| `gate` | string(10) | No | Gate number |
-| `terminal` | string(10) | No | Terminal |
-| `aircraft` | string(50) | No | Aircraft type |
-| `notes` | text | No | Additional notes |
-| `createdAt` | timestamp | Auto | Record creation time |
-| `updatedAt` | timestamp | Auto | Last update time |
+| Field           | Type        | Required | Description                    |
+| --------------- | ----------- | -------- | ------------------------------ |
+| `id`            | integer     | Auto     | Unique identifier              |
+| `flightNumber`  | string(20)  | Yes      | Flight number (e.g., "AA100")  |
+| `airline`       | string(100) | Yes      | Airline name                   |
+| `origin`        | string(100) | Yes      | Departure location             |
+| `destination`   | string(100) | Yes      | Arrival location               |
+| `departureTime` | timestamp   | Yes      | Scheduled departure (ISO 8601) |
+| `arrivalTime`   | timestamp   | Yes      | Scheduled arrival (ISO 8601)   |
+| `status`        | string(50)  | Yes      | Flight status                  |
+| `gate`          | string(10)  | No       | Gate number                    |
+| `terminal`      | string(10)  | No       | Terminal                       |
+| `aircraft`      | string(50)  | No       | Aircraft type                  |
+| `notes`         | text        | No       | Additional notes               |
+| `createdAt`     | timestamp   | Auto     | Record creation time           |
+| `updatedAt`     | timestamp   | Auto     | Last update time               |
 
 ### Flight Status Values
 
-| Status | Description |
-|--------|-------------|
-| `scheduled` | Flight is scheduled |
-| `boarding` | Boarding in progress |
-| `departed` | Flight has departed |
+| Status      | Description          |
+| ----------- | -------------------- |
+| `scheduled` | Flight is scheduled  |
+| `boarding`  | Boarding in progress |
+| `departed`  | Flight has departed  |
 | `in-flight` | Currently in the air |
-| `arrived` | Flight has arrived |
-| `delayed` | Flight is delayed |
-| `cancelled` | Flight is cancelled |
+| `arrived`   | Flight has arrived   |
+| `delayed`   | Flight is delayed    |
+| `cancelled` | Flight is cancelled  |
 
 ---
 
@@ -395,13 +404,13 @@ All errors return a JSON response with the following structure:
 
 ### HTTP Status Codes
 
-| Code | Description |
-|------|-------------|
-| `200` | OK - Request succeeded |
-| `201` | Created - Resource created successfully |
+| Code  | Description                              |
+| ----- | ---------------------------------------- |
+| `200` | OK - Request succeeded                   |
+| `201` | Created - Resource created successfully  |
 | `400` | Bad Request - Invalid request parameters |
-| `404` | Not Found - Resource does not exist |
-| `500` | Internal Server Error - Server error |
+| `404` | Not Found - Resource does not exist      |
+| `500` | Internal Server Error - Server error     |
 
 ---
 
@@ -410,6 +419,7 @@ All errors return a JSON response with the following structure:
 **Current Version (v1.0.0)**: No rate limiting
 
 **Planned (v1.1.0+)**:
+
 - 100 requests per minute per IP address
 - 1000 requests per hour per authenticated user
 
@@ -478,7 +488,7 @@ curl -X DELETE http://localhost:5000/api/flights/1
 #### Get All Flights
 
 ```javascript
-const response = await fetch('http://localhost:5000/api/flights');
+const response = await fetch("http://localhost:5000/api/flights");
 const flights = await response.json();
 console.log(flights);
 ```
@@ -486,42 +496,42 @@ console.log(flights);
 #### Create Flight
 
 ```javascript
-const response = await fetch('http://localhost:5000/api/flights', {
-  method: 'POST',
+const response = await fetch("http://localhost:5000/api/flights", {
+  method: "POST",
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
   body: JSON.stringify({
-    flightNumber: 'UA400',
-    airline: 'United Airlines',
-    origin: 'Chicago (ORD)',
-    destination: 'Denver (DEN)',
-    departureTime: '2024-11-25T11:00:00Z',
-    arrivalTime: '2024-11-25T13:00:00Z',
-    status: 'scheduled'
-  })
+    flightNumber: "UA400",
+    airline: "United Airlines",
+    origin: "Chicago (ORD)",
+    destination: "Denver (DEN)",
+    departureTime: "2024-11-25T11:00:00Z",
+    arrivalTime: "2024-11-25T13:00:00Z",
+    status: "scheduled",
+  }),
 });
 
 const flight = await response.json();
-console.log('Created flight:', flight);
+console.log("Created flight:", flight);
 ```
 
 #### Update Flight
 
 ```javascript
-const response = await fetch('http://localhost:5000/api/flights/1', {
-  method: 'PUT',
+const response = await fetch("http://localhost:5000/api/flights/1", {
+  method: "PUT",
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
   body: JSON.stringify({
-    status: 'boarding',
-    gate: 'C5'
-  })
+    status: "boarding",
+    gate: "C5",
+  }),
 });
 
 const updatedFlight = await response.json();
-console.log('Updated flight:', updatedFlight);
+console.log("Updated flight:", updatedFlight);
 ```
 
 ---
@@ -569,12 +579,14 @@ print('Created flight:', flight)
 **Not yet implemented** - Will be added in v1.2.0
 
 Planned query parameters:
+
 - `page` - Page number (default: 1)
 - `limit` - Items per page (default: 20, max: 100)
 - `sort` - Sort field (default: departureTime)
 - `order` - Sort order: asc or desc (default: desc)
 
 Example:
+
 ```
 GET /api/flights?page=2&limit=50&sort=airline&order=asc
 ```
@@ -586,6 +598,7 @@ GET /api/flights?page=2&limit=50&sort=airline&order=asc
 **Not yet implemented** - Will be added in v1.1.0
 
 Planned query parameters:
+
 - `status` - Filter by flight status
 - `airline` - Filter by airline name
 - `origin` - Filter by origin
@@ -593,6 +606,7 @@ Planned query parameters:
 - `date` - Filter by departure date
 
 Example:
+
 ```
 GET /api/flights?status=scheduled&airline=Delta&date=2024-11-25
 ```
@@ -606,6 +620,7 @@ GET /api/flights?status=scheduled&airline=Delta&date=2024-11-25
 Real-time flight status updates via WebSocket connection.
 
 Planned endpoint:
+
 ```
 ws://localhost:5000/api/ws
 ```
@@ -619,6 +634,7 @@ The API follows semantic versioning. Breaking changes will result in a new API v
 Current version: **v1.0.0**
 
 Future versions will be accessible via:
+
 ```
 /api/v2/flights
 /api/v3/flights
@@ -629,6 +645,7 @@ Future versions will be accessible via:
 ## Support
 
 For API questions or issues:
+
 - Open an issue on [GitHub](https://github.com/darshil0/flighttrackerapp/issues)
 - Check existing issues for similar questions
 - Review the main [README.md](README.md)

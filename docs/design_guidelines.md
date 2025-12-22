@@ -7,6 +7,7 @@ The Flight Tracker application follows a **system-based approach** using modern 
 ### Buttons
 
 #### Primary Button
+
 ```css
 /* Default */
 background: #2563eb;
@@ -27,6 +28,7 @@ cursor: not-allowed;
 ```
 
 #### Secondary Button
+
 ```css
 /* Default */
 background: transparent;
@@ -46,6 +48,7 @@ background: #eff6ff;
 ### Hero Section Alternative
 
 Instead of traditional hero image:
+
 - **Full-width live map** showing tracked flights immediately
 - **Floating search bar overlay** (centered, with backdrop blur, max-w-xl)
 - **Quick stats ribbon** above or below map showing key metrics
@@ -87,7 +90,7 @@ Instead of traditional hero image:
 
 ```css
 /* Blue Palette - Primary Actions & Information */
---blue-50:  #eff6ff;
+--blue-50: #eff6ff;
 --blue-100: #dbeafe;
 --blue-600: #2563eb;
 --blue-700: #1d4ed8;
@@ -95,6 +98,7 @@ Instead of traditional hero image:
 ```
 
 **Usage:**
+
 - Primary buttons and CTAs
 - Links and interactive elements
 - Information badges
@@ -104,31 +108,32 @@ Instead of traditional hero image:
 
 ```css
 /* Scheduled - Blue */
---scheduled-bg: #dbeafe;    /* bg-blue-100 */
---scheduled-text: #1e40af;  /* text-blue-800 */
+--scheduled-bg: #dbeafe; /* bg-blue-100 */
+--scheduled-text: #1e40af; /* text-blue-800 */
 
 /* Boarding - Yellow */
---boarding-bg: #fef3c7;     /* bg-yellow-100 */
---boarding-text: #92400e;   /* text-yellow-800 */
+--boarding-bg: #fef3c7; /* bg-yellow-100 */
+--boarding-text: #92400e; /* text-yellow-800 */
 
 /* Departed/In-Flight - Green */
---departed-bg: #dcfce7;     /* bg-green-100 */
---departed-text: #166534;   /* text-green-800 */
+--departed-bg: #dcfce7; /* bg-green-100 */
+--departed-text: #166534; /* text-green-800 */
 
 /* Arrived - Gray */
---arrived-bg: #f3f4f6;      /* bg-gray-100 */
---arrived-text: #1f2937;    /* text-gray-800 */
+--arrived-bg: #f3f4f6; /* bg-gray-100 */
+--arrived-text: #1f2937; /* text-gray-800 */
 
 /* Delayed - Orange */
---delayed-bg: #ffedd5;      /* bg-orange-100 */
---delayed-text: #9a3412;    /* text-orange-800 */
+--delayed-bg: #ffedd5; /* bg-orange-100 */
+--delayed-text: #9a3412; /* text-orange-800 */
 
 /* Cancelled - Red */
---cancelled-bg: #fee2e2;    /* bg-red-100 */
---cancelled-text: #991b1b;  /* text-red-800 */
+--cancelled-bg: #fee2e2; /* bg-red-100 */
+--cancelled-text: #991b1b; /* text-red-800 */
 ```
 
 **Status Indicator Rules:**
+
 - Always use pill-shaped badges with rounded corners
 - Text should be uppercase and bold
 - Minimum padding: 0.5rem horizontal, 0.25rem vertical
@@ -138,22 +143,22 @@ Instead of traditional hero image:
 
 ```css
 /* Grays - Text & Backgrounds */
---gray-50:  #f9fafb;  /* Subtle backgrounds */
---gray-100: #f3f4f6;  /* Card backgrounds */
---gray-200: #e5e7eb;  /* Borders */
---gray-400: #9ca3af;  /* Icons, disabled */
---gray-500: #6b7280;  /* Secondary text */
---gray-600: #4b5563;  /* Body text */
---gray-700: #374151;  /* Headings */
---gray-900: #111827;  /* Primary text */
+--gray-50: #f9fafb; /* Subtle backgrounds */
+--gray-100: #f3f4f6; /* Card backgrounds */
+--gray-200: #e5e7eb; /* Borders */
+--gray-400: #9ca3af; /* Icons, disabled */
+--gray-500: #6b7280; /* Secondary text */
+--gray-600: #4b5563; /* Body text */
+--gray-700: #374151; /* Headings */
+--gray-900: #111827; /* Primary text */
 ```
 
 ### Background Colors
 
 ```css
---bg-primary: #ffffff;    /* Cards, modals */
---bg-secondary: #f9fafb;  /* Page background */
---bg-tertiary: #f3f4f6;   /* Section backgrounds */
+--bg-primary: #ffffff; /* Cards, modals */
+--bg-secondary: #f9fafb; /* Page background */
+--bg-tertiary: #f3f4f6; /* Section backgrounds */
 ```
 
 ---
@@ -164,9 +169,19 @@ Instead of traditional hero image:
 
 ```css
 /* Primary Font: Inter or similar geometric sans-serif */
-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 
-             'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 
-             'Helvetica Neue', sans-serif;
+font-family:
+  "Inter",
+  -apple-system,
+  BlinkMacSystemFont,
+  "Segoe UI",
+  "Roboto",
+  "Oxygen",
+  "Ubuntu",
+  "Cantarell",
+  "Fira Sans",
+  "Droid Sans",
+  "Helvetica Neue",
+  sans-serif;
 ```
 
 **Rationale:** Inter provides excellent readability for data-heavy interfaces. Falls back to native system fonts for optimal performance and familiar feel on each platform.
@@ -175,18 +190,18 @@ font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
 
 ```css
 /* Headings */
---text-6xl: 3.75rem;   /* 60px - Hero/Feature numbers (flight numbers, times) */
---text-5xl: 3rem;      /* 48px - Feature numbers */
---text-4xl: 2.25rem;   /* 36px - Feature numbers */
---text-3xl: 1.875rem;  /* 30px - Main page titles, section headers */
---text-2xl: 1.5rem;    /* 24px - Section headings */
---text-xl: 1.25rem;    /* 20px - Card titles */
---text-lg: 1.125rem;   /* 18px - Subheadings */
+--text-6xl: 3.75rem; /* 60px - Hero/Feature numbers (flight numbers, times) */
+--text-5xl: 3rem; /* 48px - Feature numbers */
+--text-4xl: 2.25rem; /* 36px - Feature numbers */
+--text-3xl: 1.875rem; /* 30px - Main page titles, section headers */
+--text-2xl: 1.5rem; /* 24px - Section headings */
+--text-xl: 1.25rem; /* 20px - Card titles */
+--text-lg: 1.125rem; /* 18px - Subheadings */
 
 /* Body */
---text-base: 1rem;     /* 16px - Default body text, stats */
---text-sm: 0.875rem;   /* 14px - Secondary info, data labels (often uppercase with tracking) */
---text-xs: 0.75rem;    /* 12px - Labels, captions, metadata */
+--text-base: 1rem; /* 16px - Default body text, stats */
+--text-sm: 0.875rem; /* 14px - Secondary info, data labels (often uppercase with tracking) */
+--text-xs: 0.75rem; /* 12px - Labels, captions, metadata */
 
 /* Weights */
 --font-normal: 400;
@@ -197,21 +212,21 @@ font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
 
 ### Typography Scale Usage
 
-| Element | Size | Weight | Color | Notes |
-|---------|------|--------|-------|-------|
-| Hero/Feature Numbers | 4xl-6xl (36-60px) | Bold (700) | Gray-900 | Flight numbers, times |
-| Page Title | 3xl (30px) | Bold (700) | Gray-900 | Main headings |
-| Section Heading | 2xl-3xl (24-30px) | Semibold (600) | Gray-900 | Section headers |
-| Card Title | xl (20px) | Bold (700) | Gray-900 | Card headers |
-| Flight Number | xl (20px) | Bold (700) | Gray-900 | Large, prominent |
-| Airline Name | base (16px) | Regular (400) | Gray-600 | Supporting info |
-| Location Names | base (16px) | Semibold (600) | Gray-900 | Origins/destinations |
-| Stats/Body | base (16px) | Normal (400) | Gray-700 | Data points |
-| Times | base (16px) | Semibold (600) | Gray-900 | Departure/arrival |
-| Data Labels | sm (14px) | Medium (500) | Gray-600 | Often uppercase with tracking-wide |
-| Dates | xs (12px) | Regular (400) | Gray-500 | Timestamps |
-| Metadata | xs-sm (12-14px) | Normal (400) | Gray-500 | Additional info |
-| Status Badge | xs (12px) | Semibold (600) | Status Color | Uppercase with letter-spacing |
+| Element              | Size              | Weight         | Color        | Notes                              |
+| -------------------- | ----------------- | -------------- | ------------ | ---------------------------------- |
+| Hero/Feature Numbers | 4xl-6xl (36-60px) | Bold (700)     | Gray-900     | Flight numbers, times              |
+| Page Title           | 3xl (30px)        | Bold (700)     | Gray-900     | Main headings                      |
+| Section Heading      | 2xl-3xl (24-30px) | Semibold (600) | Gray-900     | Section headers                    |
+| Card Title           | xl (20px)         | Bold (700)     | Gray-900     | Card headers                       |
+| Flight Number        | xl (20px)         | Bold (700)     | Gray-900     | Large, prominent                   |
+| Airline Name         | base (16px)       | Regular (400)  | Gray-600     | Supporting info                    |
+| Location Names       | base (16px)       | Semibold (600) | Gray-900     | Origins/destinations               |
+| Stats/Body           | base (16px)       | Normal (400)   | Gray-700     | Data points                        |
+| Times                | base (16px)       | Semibold (600) | Gray-900     | Departure/arrival                  |
+| Data Labels          | sm (14px)         | Medium (500)   | Gray-600     | Often uppercase with tracking-wide |
+| Dates                | xs (12px)         | Regular (400)  | Gray-500     | Timestamps                         |
+| Metadata             | xs-sm (12-14px)   | Normal (400)   | Gray-500     | Additional info                    |
+| Status Badge         | xs (12px)         | Semibold (600) | Status Color | Uppercase with letter-spacing      |
 
 ---
 
@@ -220,14 +235,14 @@ font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
 ### Spacing Scale (based on 4px grid)
 
 ```css
---spacing-1: 0.25rem;  /* 4px */
---spacing-2: 0.5rem;   /* 8px */
---spacing-3: 0.75rem;  /* 12px */
---spacing-4: 1rem;     /* 16px */
---spacing-6: 1.5rem;   /* 24px */
---spacing-8: 2rem;     /* 32px */
---spacing-12: 3rem;    /* 48px */
---spacing-16: 4rem;    /* 64px */
+--spacing-1: 0.25rem; /* 4px */
+--spacing-2: 0.5rem; /* 8px */
+--spacing-3: 0.75rem; /* 12px */
+--spacing-4: 1rem; /* 16px */
+--spacing-6: 1.5rem; /* 24px */
+--spacing-8: 2rem; /* 32px */
+--spacing-12: 3rem; /* 48px */
+--spacing-16: 4rem; /* 64px */
 ```
 
 **Tailwind Primitives:** Use units of 2, 4, 6, and 8 primarily for consistency.
@@ -261,18 +276,21 @@ padding: 0.5rem 1rem; /* 8px vertical, 16px horizontal */
 ### Navigation Header
 
 **Structure:**
+
 - Fixed top position with backdrop blur (`fixed top-0 backdrop-blur`)
 - Height: `h-16` (64px)
 - Logo left, search bar center (max-w-xl), user actions right
 - Search with autocomplete for flight numbers, routes, airports
 
 **Specifications:**
+
 - Background: White with backdrop blur or semi-transparent
 - Z-index: 50 (stays above content)
 - Border Bottom: 1px solid #e5e7eb
 - Shadow: Subtle `shadow-sm`
 
 **Elements:**
+
 - **Logo**: Left-aligned, h-8 to h-10
 - **Search Bar**: Center, max-w-xl, rounded-lg, with search icon
 - **Actions**: Right-aligned, icon buttons or user menu
@@ -282,6 +300,7 @@ padding: 0.5rem 1rem; /* 8px vertical, 16px horizontal */
 ### Interactive Map Section (Future Enhancement)
 
 **Specifications:**
+
 - Full-width container
 - Minimum height: `min-h-[600px]`
 - Leaflet.js for map rendering with aviation tile layers
@@ -292,6 +311,7 @@ padding: 0.5rem 1rem; /* 8px vertical, 16px horizontal */
 
 **Hero Alternative:**
 Instead of traditional hero, lead with:
+
 - Full-width live map showing tracked flights immediately
 - Floating search bar overlay (centered, with backdrop blur)
 - Quick stats ribbon above or below map
@@ -301,6 +321,7 @@ Instead of traditional hero, lead with:
 ### Flight Card (Compact Design)
 
 **Structure:**
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  FLIGHT-123  [STATUS]                      10:30 AM     │
@@ -314,6 +335,7 @@ Instead of traditional hero, lead with:
 ```
 
 **Specifications:**
+
 - Background: White (#ffffff)
 - Border: 1px solid #e5e7eb or use `rounded-lg` with shadow
 - Shadow: `shadow-sm` (0 1px 3px 0 rgba(0, 0, 0, 0.1))
@@ -323,12 +345,14 @@ Instead of traditional hero, lead with:
 - Minimum Height: 160px
 
 **Layout:**
+
 - **Header**: Flight number (large, bold) + airline logo + status badge
 - **Timeline**: Departure → Current Position → Arrival visualization
 - **Grid Details**: 2 columns on mobile, 3-4 on desktop
 - **Key Data**: Altitude, Speed, Aircraft type, Route, Gates
 
 **Interactive States:**
+
 - Default: White background, subtle shadow
 - Hover: Elevated shadow, slight scale (transform scale-[1.01])
 - Active: Pressed appearance with reduced shadow
@@ -339,6 +363,7 @@ Instead of traditional hero, lead with:
 ### Airport Departure/Arrival Boards
 
 **Structure:**
+
 - Table layout with alternating row treatments
 - Sticky header: `sticky top-0 z-10`
 - Sortable columns with clear active sort indicators
@@ -346,6 +371,7 @@ Instead of traditional hero, lead with:
 - Compact row height: `py-3`
 
 **Columns:**
+
 - Time (Scheduled/Actual)
 - Flight Number
 - Destination/Origin
@@ -354,6 +380,7 @@ Instead of traditional hero, lead with:
 - Terminal
 
 **Features:**
+
 - Color-coded status indicators
 - Real-time updates
 - Search/filter capability
@@ -364,6 +391,7 @@ Instead of traditional hero, lead with:
 ### Search & Filters Panel
 
 **Structure:**
+
 - Collapsible sidebar or dropdown on mobile
 - Filter groups: Airlines, Status, Aircraft Type, Time Range
 - Checkbox lists with search within filters
@@ -371,6 +399,7 @@ Instead of traditional hero, lead with:
 - Active filter chips display
 
 **Specifications:**
+
 - Sidebar width: `w-64` to `w-80` (256-320px) on desktop
 - Mobile: Full-screen drawer or bottom sheet
 - Background: Light gray (`bg-gray-50`)
@@ -381,12 +410,14 @@ Instead of traditional hero, lead with:
 ### Flight Details Modal/Drawer
 
 **Structure:**
+
 - Slide-in panel from right on desktop (`w-96` to `w-[32rem]`)
 - Full screen on mobile
 - Close button (X icon) top-right
 - Tabs for different sections
 
 **Sections:**
+
 - Flight path map (mini view)
 - Timeline visualization
 - Aircraft details
@@ -396,6 +427,7 @@ Instead of traditional hero, lead with:
 - Delays/Alternatives (optional)
 
 **Specifications:**
+
 - Background: White
 - Backdrop: Semi-transparent dark (`bg-black/50`)
 - Animation: Slide-in with fade
@@ -406,6 +438,7 @@ Instead of traditional hero, lead with:
 ### Stats Dashboard
 
 **Structure:**
+
 - 4-column grid of key metrics (`grid-cols-1 md:grid-cols-2 lg:grid-cols-4`)
 - Each metric card contains:
   - Large number (text-3xl to text-4xl)
@@ -414,6 +447,7 @@ Instead of traditional hero, lead with:
   - Icon
 
 **Metrics Examples:**
+
 - Flights Tracked
 - Active Now
 - Delayed Today
@@ -426,20 +460,24 @@ Instead of traditional hero, lead with:
 ### Data Visualization Components
 
 **Timeline:**
+
 - Horizontal progress bar with key milestones
 - Shows: Scheduled departure → Gates → Takeoff → Landing → Arrival
 - Current position highlighted
 
 **Altitude Chart:**
+
 - Line graph showing flight profile
 - X-axis: Time, Y-axis: Altitude
 - Shows climb, cruise, descent phases
 
 **Speed Indicator:**
+
 - Circular gauge or large numeric display with unit
 - Shows current speed in knots or km/h
 
 **Route Map:**
+
 - Simplified departure-to-arrival visualization
 - Shows origin airport, destination airport, flight path
 - Current position marker (if in-flight)
@@ -449,6 +487,7 @@ Instead of traditional hero, lead with:
 ### Status Badge
 
 #### Primary Button
+
 ```css
 /* Default */
 background: #2563eb;
@@ -469,6 +508,7 @@ cursor: not-allowed;
 ```
 
 #### Secondary Button
+
 ```css
 /* Default */
 background: transparent;
@@ -498,6 +538,7 @@ letter-spacing: 0.05em;
 ### Header
 
 **Specifications:**
+
 - Background: White (#ffffff) with backdrop blur (optional)
 - Border Bottom: 1px solid #e5e7eb
 - Shadow: `shadow-sm` (0 1px 3px 0 rgba(0, 0, 0, 0.1))
@@ -506,6 +547,7 @@ letter-spacing: 0.05em;
 - Z-index: 10 or higher
 
 **Elements:**
+
 - Title: text-3xl, font-bold, text-gray-900
 - Subtitle: text-base, font-regular, text-gray-600
 - Actions: Aligned to the right (flex justify-between)
@@ -526,12 +568,7 @@ letter-spacing: 0.05em;
 
 /* Skeleton */
 .skeleton {
-  background: linear-gradient(
-    90deg,
-    #f3f4f6 25%,
-    #e5e7eb 50%,
-    #f3f4f6 75%
-  );
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
@@ -575,12 +612,14 @@ margin-bottom: 1rem;
 Use **SVG icons** from a consistent icon set. Primary choice: **Heroicons** (outline and solid variants).
 
 **Size Scale:**
+
 - Small: `h-4 w-4` (1rem / 16px)
 - Medium: `h-5 w-5` (1.25rem / 20px)
 - Large: `h-6 w-6` (1.5rem / 24px)
 - Extra Large: `h-8 w-8` (2rem / 32px)
 
 **Common Icons:**
+
 - **Navigation**: magnifying-glass (search), funnel (filter), globe-alt (map view)
 - **Flight**: paper-airplane (flights), arrow-up (takeoff), arrow-down (landing)
 - **Status**: check-circle (success), clock (scheduled/delayed), x-circle (cancelled), exclamation-triangle (warning)
@@ -655,6 +694,7 @@ gap: 1rem;
 ```
 
 **Grid Strategy:**
+
 - Flight cards: 3-column grid on desktop (lg:grid-cols-3), 2 on tablet (md:grid-cols-2), single on mobile
 - Stats dashboard: 4 columns on desktop (lg:grid-cols-4), 2 on tablet (md:grid-cols-2), 1 on mobile
 - Main layout: 12-column grid on desktop (lg:grid-cols-12)
@@ -669,24 +709,35 @@ gap: 1rem;
 /* Mobile First Approach */
 
 /* Small devices (phones) */
-@media (min-width: 640px) { /* sm */ }
+@media (min-width: 640px) {
+  /* sm */
+}
 
 /* Medium devices (tablets) */
-@media (min-width: 768px) { /* md */ }
+@media (min-width: 768px) {
+  /* md */
+}
 
 /* Large devices (laptops) */
-@media (min-width: 1024px) { /* lg */ }
+@media (min-width: 1024px) {
+  /* lg */
+}
 
 /* Extra large devices (desktops) */
-@media (min-width: 1280px) { /* xl */ }
+@media (min-width: 1280px) {
+  /* xl */
+}
 
 /* 2X large devices (large desktops) */
-@media (min-width: 1536px) { /* 2xl */ }
+@media (min-width: 1536px) {
+  /* 2xl */
+}
 ```
 
 ### Mobile Adaptations
 
 **Flight Card on Mobile:**
+
 - Stack time information vertically
 - Reduce padding to `p-4` (1rem)
 - Font sizes reduced by 1 step (e.g., text-xl → text-lg)
@@ -695,6 +746,7 @@ gap: 1rem;
 - Simplified layout with essential info only
 
 **Header on Mobile:**
+
 - Stack title and actions vertically or reduce spacing
 - Reduce title font size to text-2xl
 - Full-width or simplified refresh button
@@ -702,16 +754,19 @@ gap: 1rem;
 - Search bar: Full-width when active
 
 **Navigation on Mobile:**
+
 - Bottom tab bar or hamburger menu
 - Sticky navigation
 - Icon-only with labels on active state
 
 **Tables on Mobile:**
+
 - Convert to card-based layout
 - Show essential columns only
 - Expandable rows for additional details
 
 **Map on Mobile:**
+
 - Full-width: w-full
 - Reduced height: min-h-[400px]
 - Touch-friendly controls
@@ -756,8 +811,12 @@ transition: opacity 0.3s ease; /* Subtle fade (transition-opacity duration-300) 
 ```css
 /* Fade In - For live updates */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Slide Up */
@@ -774,16 +833,21 @@ transition: opacity 0.3s ease; /* Subtle fade (transition-opacity duration-300) 
 
 /* Spin (Loading) */
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Shimmer (Skeleton) */
 @keyframes shimmer {
-  to { background-position: -200% 0; }
+  to {
+    background-position: -200% 0;
+  }
 }
 ```
 
 **Usage Guidelines:**
+
 - Keep animations under 300ms for interactions
 - Use 600ms-1000ms for page transitions
 - **Flight marker movement**: Smooth position transitions with ease-in-out
@@ -801,6 +865,7 @@ transition: opacity 0.3s ease; /* Subtle fade (transition-opacity duration-300) 
 ### Color Contrast
 
 All text must meet WCAG AA standards:
+
 - Normal text (< 18px): 4.5:1 contrast ratio minimum
 - Large text (≥ 18px): 3:1 contrast ratio minimum
 - Interactive elements: 3:1 contrast ratio minimum
@@ -853,6 +918,7 @@ All text must meet WCAG AA standards:
 ### ARIA Labels for Map Elements
 
 When implementing interactive map:
+
 - `aria-label` for flight markers
 - `aria-label` for zoom controls
 - `role="application"` for map container with keyboard instructions
@@ -870,7 +936,7 @@ When implementing interactive map:
   --bg-secondary: #111827;
   --text-primary: #f9fafb;
   --text-secondary: #d1d5db;
-  
+
   /* Adjust status colors for dark background */
   --scheduled-bg: #1e40af;
   --scheduled-text: #dbeafe;
@@ -902,12 +968,14 @@ When implementing new features, ensure:
 ## Resources
 
 ### Tools
+
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [Radix UI Components](https://www.radix-ui.com)
 - [Heroicons](https://heroicons.com)
 - [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker)
 
 ### Inspiration
+
 - [Flightradar24](https://www.flightradar24.com)
 - [FlightAware](https://www.flightaware.com)
 - Airport departure/arrival boards

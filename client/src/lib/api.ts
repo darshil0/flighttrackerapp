@@ -1,15 +1,20 @@
-import type { Flight, NewFlightInput, FlightUpdateInput, HealthCheckResponse } from '../../../shared/types';
+import type {
+  Flight,
+  NewFlightInput,
+  FlightUpdateInput,
+  HealthCheckResponse,
+} from "../../../shared/types";
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 class ApiError extends Error {
   constructor(
     message: string,
     public status: number,
-    public statusText: string
+    public statusText: string,
   ) {
     super(message);
-    this.name = 'ApiError';
+    this.name = "ApiError";
   }
 }
 
@@ -17,9 +22,11 @@ async function handleResponse<T>(response: Response): Promise<T> {
   if (!response.ok) {
     const error = await response.json().catch(() => ({}));
     throw new ApiError(
-      error.message || error.error || `HTTP ${response.status}: ${response.statusText}`,
+      error.message ||
+        error.error ||
+        `HTTP ${response.status}: ${response.statusText}`,
       response.status,
-      response.statusText
+      response.statusText,
     );
   }
   return response.json();
@@ -37,7 +44,7 @@ export async function fetchFlights(): Promise<Flight[]> {
     const response = await fetch(`${API_BASE_URL}/api/flights`);
     return handleResponse<Flight[]>(response);
   } catch (error) {
-    console.error('Error fetching flights:', error);
+    console.error("Error fetching flights:", error);
     throw error;
   }
 }
@@ -57,15 +64,15 @@ export async function fetchFlight(id: number): Promise<Flight> {
 export async function createFlight(flight: NewFlightInput): Promise<Flight> {
   try {
     const response = await fetch(`${API_BASE_URL}/api/flights`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(flight),
     });
     return handleResponse<Flight>(response);
   } catch (error) {
-    console.error('Error creating flight:', error);
+    console.error("Error creating flight:", error);
     throw error;
   }
 }
@@ -73,13 +80,13 @@ export async function createFlight(flight: NewFlightInput): Promise<Flight> {
 // Update flight
 export async function updateFlight(
   id: number,
-  updates: FlightUpdateInput
+  updates: FlightUpdateInput,
 ): Promise<Flight> {
   try {
     const response = await fetch(`${API_BASE_URL}/api/flights/${id}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(updates),
     });
@@ -94,7 +101,7 @@ export async function updateFlight(
 export async function deleteFlight(id: number): Promise<void> {
   try {
     const response = await fetch(`${API_BASE_URL}/api/flights/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
     });
     await handleResponse(response);
   } catch (error) {
