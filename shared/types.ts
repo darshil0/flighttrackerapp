@@ -1,12 +1,12 @@
 // Flight status types
-export type FlightStatus = 
-  | 'scheduled' 
-  | 'boarding' 
-  | 'departed' 
-  | 'in-flight' 
-  | 'arrived' 
-  | 'delayed' 
-  | 'cancelled';
+export type FlightStatus =
+  | "scheduled"
+  | "boarding"
+  | "departed"
+  | "in-flight"
+  | "arrived"
+  | "delayed"
+  | "cancelled";
 
 // API Response wrapper
 export interface ApiResponse<T> {
@@ -65,7 +65,7 @@ export interface FlightUpdateInput {
 
 // Health check response
 export interface HealthCheckResponse {
-  status: 'ok' | 'error';
+  status: "ok" | "error";
   timestamp: string;
   environment?: string;
 }

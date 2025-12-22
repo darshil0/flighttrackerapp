@@ -71,12 +71,14 @@ API_TIMEOUT=30000
 ### Option 1: Managed PostgreSQL
 
 **Neon (Recommended)**
+
 1. Sign up at [neon.tech](https://neon.tech)
 2. Create a new project
 3. Copy the connection string
 4. Use it as your `DATABASE_URL`
 
 **Supabase**
+
 1. Sign up at [supabase.com](https://supabase.com)
 2. Create a new project
 3. Go to Settings → Database
@@ -84,6 +86,7 @@ API_TIMEOUT=30000
 5. Use it as your `DATABASE_URL`
 
 **Railway Database**
+
 1. In your Railway project
 2. Click "New" → "Database" → "PostgreSQL"
 3. Copy the connection string from variables
@@ -116,31 +119,37 @@ GRANT ALL PRIVILEGES ON DATABASE flighttracker TO flighttracker_user;
 #### Steps
 
 1. **Install Railway CLI**
+
    ```bash
    npm install -g @railway/cli
    ```
 
 2. **Login**
+
    ```bash
    railway login
    ```
 
 3. **Initialize Project**
+
    ```bash
    railway init
    ```
 
 4. **Add PostgreSQL**
+
    ```bash
    railway add -d postgresql
    ```
 
 5. **Set Environment Variables**
+
    ```bash
    railway variables set NODE_ENV=production
    ```
 
 6. **Deploy**
+
    ```bash
    railway up
    ```
@@ -197,6 +206,7 @@ Create `railway.json` in root:
    - Copy internal connection string
 
 5. **Set Environment Variables**
+
    ```
    DATABASE_URL=[paste connection string]
    NODE_ENV=production
@@ -242,36 +252,43 @@ databases:
 #### Steps
 
 1. **Install Heroku CLI**
+
    ```bash
    npm install -g heroku
    ```
 
 2. **Login**
+
    ```bash
    heroku login
    ```
 
 3. **Create App**
+
    ```bash
    heroku create flighttrackerapp
    ```
 
 4. **Add PostgreSQL**
+
    ```bash
    heroku addons:create heroku-postgresql:mini
    ```
 
 5. **Set Environment Variables**
+
    ```bash
    heroku config:set NODE_ENV=production
    ```
 
 6. **Deploy**
+
    ```bash
    git push heroku main
    ```
 
 7. **Run Database Migrations**
+
    ```bash
    heroku run npm run db:push
    ```
@@ -299,11 +316,13 @@ release: npm run db:push
 #### Frontend (Vercel)
 
 1. **Install Vercel CLI**
+
    ```bash
    npm install -g vercel
    ```
 
 2. **Deploy Frontend**
+
    ```bash
    cd client
    vercel --prod
@@ -320,10 +339,12 @@ Update CORS settings to allow frontend domain:
 
 ```typescript
 // server/index-prod.ts
-app.use(cors({
-  origin: 'https://your-frontend.vercel.app',
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: "https://your-frontend.vercel.app",
+    credentials: true,
+  }),
+);
 ```
 
 ---
@@ -340,49 +361,58 @@ app.use(cors({
    - Choose datacenter region
 
 2. **SSH into Server**
+
    ```bash
    ssh root@your-server-ip
    ```
 
 3. **Install Node.js**
+
    ```bash
    curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
    sudo apt-get install -y nodejs
    ```
 
 4. **Install PostgreSQL**
+
    ```bash
    sudo apt-get install postgresql postgresql-contrib
    ```
 
 5. **Clone Repository**
+
    ```bash
    git clone https://github.com/darshil0/flighttrackerapp.git
    cd flighttrackerapp
    ```
 
 6. **Install Dependencies**
+
    ```bash
    npm install
    ```
 
 7. **Set Environment Variables**
+
    ```bash
    nano .env
    # Add your variables
    ```
 
 8. **Build Application**
+
    ```bash
    npm run build
    ```
 
 9. **Install PM2** (process manager)
+
    ```bash
    npm install -g pm2
    ```
 
 10. **Start Application**
+
     ```bash
     pm2 start dist/server/index-prod.js --name flighttracker
     pm2 save
@@ -400,21 +430,25 @@ app.use(cors({
 #### Using Elastic Beanstalk
 
 1. **Install EB CLI**
+
    ```bash
    pip install awsebcli
    ```
 
 2. **Initialize**
+
    ```bash
    eb init -p node.js-18 flighttrackerapp
    ```
 
 3. **Create Environment**
+
    ```bash
    eb create flighttrackerapp-env
    ```
 
 4. **Set Environment Variables**
+
    ```bash
    eb setenv DATABASE_URL=postgresql://... NODE_ENV=production
    ```
@@ -427,6 +461,7 @@ app.use(cors({
 #### Using EC2
 
 Similar to DigitalOcean VPS approach:
+
 1. Launch EC2 instance (Ubuntu 22.04)
 2. Configure security groups (ports 80, 443, 22)
 3. Follow DigitalOcean steps above
@@ -483,7 +518,7 @@ CMD ["node", "dist/server/index-prod.js"]
 For local testing with Docker:
 
 ```yaml
-version: '3.8'
+version: "3.8"
 
 services:
   app:
@@ -631,6 +666,7 @@ pm2 status
 ### Application Monitoring
 
 Consider using:
+
 - **Sentry** - Error tracking
 - **LogRocket** - Session replay
 - **DataDog** - Full-stack monitoring
@@ -820,6 +856,7 @@ psql $DATABASE_URL < backup.sql
 ## Support
 
 For deployment help:
+
 - Check platform-specific documentation
 - Review error logs carefully
 - Open an issue on GitHub

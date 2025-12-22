@@ -7,6 +7,7 @@ Based on the repository structure (React + TypeScript + Express + PostgreSQL + D
 ## 1. Database Connection Issues
 
 ### Problem: PostgreSQL connection errors
+
 **Fix the `.env` configuration:**
 
 ```env
@@ -20,13 +21,13 @@ PORT=5000
 
 ```typescript
 // server/db.ts or similar
-import { drizzle } from 'drizzle-orm/postgres-js';
-import postgres from 'postgres';
+import { drizzle } from "drizzle-orm/postgres-js";
+import postgres from "postgres";
 
 const connectionString = process.env.DATABASE_URL;
 
 if (!connectionString) {
-  throw new Error('DATABASE_URL is not set');
+  throw new Error("DATABASE_URL is not set");
 }
 
 const client = postgres(connectionString);
@@ -38,19 +39,22 @@ export const db = drizzle(client);
 ## 2. CORS Issues
 
 ### Problem: Frontend can't communicate with backend
+
 **Fix in `server/index-dev.ts` or `server/routes.ts`:**
 
 ```typescript
-import express from 'express';
-import cors from 'cors';
+import express from "express";
+import cors from "cors";
 
 const app = express();
 
 // Add CORS middleware
-app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL || "http://localhost:5173",
+    credentials: true,
+  }),
+);
 
 app.use(express.json());
 ```
@@ -60,30 +64,31 @@ app.use(express.json());
 ## 3. API Route Issues
 
 ### Problem: Routes return undefined or error responses
+
 **Fix in `server/routes.ts`:**
 
 ```typescript
-import { Router } from 'express';
-import { db } from './db';
-import { flights } from '../shared/schema';
+import { Router } from "express";
+import { db } from "./db";
+import { flights } from "../shared/schema";
 
 const router = Router();
 
 // Health check
-router.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+router.get("/api/health", (req, res) => {
+  res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
 // Get all flights with error handling
-router.get('/api/flights', async (req, res) => {
+router.get("/api/flights", async (req, res) => {
   try {
     const allFlights = await db.select().from(flights);
     res.json(allFlights);
   } catch (error) {
-    console.error('Error fetching flights:', error);
-    res.status(500).json({ 
-      error: 'Failed to fetch flights',
-      message: error instanceof Error ? error.message : 'Unknown error'
+    console.error("Error fetching flights:", error);
+    res.status(500).json({
+      error: "Failed to fetch flights",
+      message: error instanceof Error ? error.message : "Unknown error",
     });
   }
 });
@@ -96,22 +101,23 @@ export default router;
 ## 4. Database Schema Issues
 
 ### Problem: Database migrations fail or tables don't exist
+
 **Ensure proper schema definition in `shared/schema.ts`:**
 
 ```typescript
-import { pgTable, serial, text, timestamp, varchar } from 'drizzle-orm/pg-core';
+import { pgTable, serial, text, timestamp, varchar } from "drizzle-orm/pg-core";
 
-export const flights = pgTable('flights', {
-  id: serial('id').primaryKey(),
-  flightNumber: varchar('flight_number', { length: 10 }).notNull(),
-  airline: varchar('airline', { length: 100 }).notNull(),
-  origin: varchar('origin', { length: 100 }).notNull(),
-  destination: varchar('destination', { length: 100 }).notNull(),
-  departureTime: timestamp('departure_time').notNull(),
-  arrivalTime: timestamp('arrival_time').notNull(),
-  status: varchar('status', { length: 50 }).default('scheduled'),
-  createdAt: timestamp('created_at').defaultNow(),
-  updatedAt: timestamp('updated_at').defaultNow()
+export const flights = pgTable("flights", {
+  id: serial("id").primaryKey(),
+  flightNumber: varchar("flight_number", { length: 10 }).notNull(),
+  airline: varchar("airline", { length: 100 }).notNull(),
+  origin: varchar("origin", { length: 100 }).notNull(),
+  destination: varchar("destination", { length: 100 }).notNull(),
+  departureTime: timestamp("departure_time").notNull(),
+  arrivalTime: timestamp("arrival_time").notNull(),
+  status: varchar("status", { length: 50 }).default("scheduled"),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
 });
 
 export type Flight = typeof flights.$inferSelect;
@@ -133,22 +139,23 @@ npm run db:push
 ## 5. Frontend API Integration Issues
 
 ### Problem: React app can't fetch data from backend
+
 **Fix in `client/src/lib/api.ts` (create if doesn't exist):**
 
 ```typescript
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 export async function fetchFlights() {
   try {
     const response = await fetch(`${API_BASE_URL}/api/flights`);
-    
+
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    
+
     return await response.json();
   } catch (error) {
-    console.error('Error fetching flights:', error);
+    console.error("Error fetching flights:", error);
     throw error;
   }
 }
@@ -194,13 +201,14 @@ export default App;
 ## 6. Build Issues
 
 ### Problem: Production build fails or doesn't serve correctly
+
 **Fix in `server/index-prod.ts`:**
 
 ```typescript
-import express from 'express';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import routes from './routes';
+import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
+import routes from "./routes";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -211,11 +219,11 @@ app.use(express.json());
 app.use(routes);
 
 // Serve static files from the dist directory
-app.use(express.static(path.join(__dirname, '../dist/client')));
+app.use(express.static(path.join(__dirname, "../dist/client")));
 
 // Handle React routing - send all other requests to index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist/client/index.html'));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../dist/client/index.html"));
 });
 
 const PORT = process.env.PORT || 5000;
@@ -229,6 +237,7 @@ app.listen(PORT, () => {
 ## 7. Environment Variables Not Loading
 
 ### Problem: Variables in .env aren't accessible
+
 **Create `.env.example`:**
 
 ```env
@@ -241,20 +250,20 @@ VITE_API_URL=http://localhost:5000
 **Fix in `vite.config.ts` for client-side env vars:**
 
 ```typescript
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
     proxy: {
-      '/api': {
-        target: 'http://localhost:5000',
-        changeOrigin: true
-      }
-    }
-  }
+      "/api": {
+        target: "http://localhost:5000",
+        changeOrigin: true,
+      },
+    },
+  },
 });
 ```
 
@@ -263,6 +272,7 @@ export default defineConfig({
 ## 8. TypeScript Type Errors
 
 ### Problem: Type mismatches between frontend and backend
+
 **Create shared types in `shared/types.ts`:**
 
 ```typescript
@@ -274,7 +284,7 @@ export interface Flight {
   destination: string;
   departureTime: Date | string;
   arrivalTime: Date | string;
-  status: 'scheduled' | 'delayed' | 'departed' | 'arrived' | 'cancelled';
+  status: "scheduled" | "delayed" | "departed" | "arrived" | "cancelled";
   createdAt?: Date | string;
   updatedAt?: Date | string;
 }
@@ -291,6 +301,7 @@ export interface ApiResponse<T> {
 ## 9. Query Client Setup Issues
 
 ### Problem: TanStack Query not working properly
+
 **Fix in `client/src/main.tsx`:**
 
 ```typescript
@@ -324,22 +335,23 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 ## 10. Database Not Initializing
 
 ### Problem: Tables don't exist on first run
+
 **Create an initialization script `server/init-db.ts`:**
 
 ```typescript
-import { db } from './db';
-import { sql } from 'drizzle-orm';
+import { db } from "./db";
+import { sql } from "drizzle-orm";
 
 async function initDatabase() {
   try {
     // Check if tables exist
     await db.execute(sql`SELECT 1 FROM flights LIMIT 1`);
-    console.log('Database tables already exist');
+    console.log("Database tables already exist");
   } catch (error) {
-    console.log('Initializing database...');
+    console.log("Initializing database...");
     // Run migrations
     // This should be handled by drizzle-kit
-    console.log('Please run: npm run db:push');
+    console.log("Please run: npm run db:push");
   }
 }
 
